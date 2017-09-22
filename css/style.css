@@ -1,0 +1,50 @@
+.dragdrop-sortable-item{
+	border: 1px solid #ccc;
+}
+
+.dragdrop-sortable-item-bottom{
+	padding: 15px 0 0 0;
+}
+
+.dragdrop-sortable-item-body{
+	padding: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.dragdrop-sortable-item-header{
+	background-color: #F1F1F1;
+	position: relative;
+	padding-left: 30px;
+}
+
+#poststuff .dragdrop-sortable-item-header h3.hndle,
+.dragdrop-sortable-item-header h3.hndle{
+	padding-left: 0;
+}
+
+.closed .dragdrop-sortable-item-body{
+	display: none;
+}
+
+.dragdrop-sortable-content > ul{
+	margin: 12px 0;
+}
+
+.dragdrop-sortable-item.closed .dashicons-arrow-up:before{
+	content: "\f140";
+}
+
+button.header-dragdrop-remove-icon {
+    border: 0 none;
+    background-color: transparent;
+    color: #a00;
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -10px;
+    cursor: pointer;
+}
