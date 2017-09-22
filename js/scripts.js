@@ -98,5 +98,14 @@ jQuery(document).ready(function($){
     	$('#dragdrop-sortable').append(newItem);
     });
 
+	/**
+	 * Set the height of drop placeholder
+	 */
+	$("#dragdrop-sortable").on("sortstart", function(event, ui){
+		var height = ui.item.height();
+		$('#dragdrop-sortable li.dragdrop-highlight').height(height);
+	});
+
+	$('.select2-text-select').select2();
 
 }); //End of DOM ready

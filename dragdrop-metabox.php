@@ -25,10 +25,12 @@ function dragdrop_metabox_display_callback(){
 add_action('admin_enqueue_scripts', function($pagename){
 	global $typenow;
 	if('post.php' == $pagename && $typenow == 'page'){
+		wp_enqueue_style('dragdrop-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css', [], null);
 		wp_enqueue_style('dragdrop-style', get_template_directory_uri() . '/inc/dragdrop/css/style.css', [], null);
 		
 		wp_enqueue_script('jquery-ui-sortable');
 		wp_enqueue_script('dragdrop-script', get_template_directory_uri() . '/inc/dragdrop/js/scripts.js', [], null, true);
+		wp_enqueue_script('dragdrop-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', [], null, true);
 	}
 });
 

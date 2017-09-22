@@ -30,7 +30,19 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><input type="text" class="widefat" name="test_dragdrop[<?= $index; ?>][column_1]" value="<?= empty($item['column_1']) ? '' : $item['column_1']; ?>"></td>
+								<td>
+									<?php // empty($item['column_1']) ? '' : $item['column_1']; ?>
+									<select class="select2-text-select" name="test_dragdrop[<?= $index; ?>][column_1]">
+										<option value="AL">Alabama</option>
+										<option value="AL">Andorra</option>
+										<option value="AL">Australia</option>
+										<option value="AL">Bangladesh</option>
+										<option value="AL">Belgium</option>
+										<option value="AL">Brazil</option>
+										<option value="WY">China</option>
+										<option value="WY">Wyoming</option>
+									</select>
+								</td>
 								<td><input type="text" class="widefat" name="test_dragdrop[<?= $index; ?>][column_2]" value="<?= empty($item['column_2']) ? '' : $item['column_2']; ?>"></td>
 								<td><input type="text" class="widefat" name="test_dragdrop[<?= $index; ?>][column_3]" value="<?= empty($item['column_3']) ? '' : $item['column_3']; ?>"></td>
 							</tr>
