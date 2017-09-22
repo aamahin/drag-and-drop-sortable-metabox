@@ -24,7 +24,9 @@ jQuery(document).ready(function($){
     function dragdropChnageItemOrder(){
     	var allDragdropItems = $('.dragdrop-sortable-content li.single-sortable-item');
     	$.each(allDragdropItems, function(index, value){
-    		allDragdropItems.eq(index).find('input.dragdrop-set-order').val(index);
+            var childItem = allDragdropItems.eq(index);
+            childItem.find('input.dragdrop-set-order').val(index);
+    		childItem.find('span.dragdrop-item-count').html(index+1);
     	});
     }//End of dragdropChnageItemOrder
     
@@ -57,7 +59,7 @@ jQuery(document).ready(function($){
 					html += '<button type="button" class="handlediv" aria-expanded="true">';
 						html += '<span class="dashicons dashicons-arrow-up"></span>';
 					html += '</button>';
-					html += '<h3 class="hndle">Store Name</h3>';
+					html += '<h3 class="hndle">Store Name <span class="dragdrop-item-count">'+ (index+1) +'</span></h3>';
 					html += '<button type="button" class="remove-dragdrop-sortable header-dragdrop-remove-icon"><span class="dashicons dashicons-no-alt"></span></button>';
 				html += '</div>';
 	    		html += '<div class="dragdrop-sortable-item-body">';
@@ -71,7 +73,20 @@ jQuery(document).ready(function($){
 						html += '</thead>';
 		    			html += '<tbody>';
 			    			html += '<tr>';
-			    				html += '<td><input type="text" class="widefat" name="test_dragdrop['+index+'][column_1]"></td>';
+			    				html += '<td><select class="select2-text-select newrow-select2" name="test_dragdrop['+index+'][column_1]">';
+                                    html += '<option value="AL">Alabama</option>';
+                                    html += '<option value="AL">Andorra</option>';
+                                    html += '<option value="AL">Australia</option>';
+                                    html += '<option value="AL">Bangladesh</option>';
+                                    html += '<option value="AL">Belgium</option>';
+                                    html += '<option value="AL">Brazil</option>';
+                                    html += '<option value="WY">China</option>';
+                                    html += '<option value="WY">Ghana</option>';
+                                    html += '<option value="WY">India</option>';
+                                    html += '<option value="WY">Japan</option>';
+                                    html += '<option value="WY">Macau</option>';
+                                    html += '<option value="WY">Wyoming</option>';
+                                html += '</select></td>';
 			    				html += '<td><input type="text" class="widefat" name="test_dragdrop['+index+'][column_2]"></td>';
 			    				html += '<td><input type="text" class="widefat" name="test_dragdrop['+index+'][column_3]"></td>';
 			    			html += '</tr>';
@@ -94,8 +109,19 @@ jQuery(document).ready(function($){
     	evt.preventDefault();
     	evt.stopPropagation();
     	var allDragdropItems = $('.dragdrop-sortable-content li.single-sortable-item');
-    	var newItem = newDragdropHTMLContent(allDragdropItems.length + 1);
-    	$('#dragdrop-sortable').append(newItem);
+    	var newItem = newDragdropHTMLContent(allDragdropItems.length);
+    	$('#dragdrop-sortable').append(newItem); //Item added
+        
+        // Re-initialize select2 for new item
+        $('.select2-text-select.newrow-select2').select2({
+            width: '100%'
+        });
+
+        // Remove extra class from select tag
+        setTimeout(function(){
+            $('select.select2-text-select.newrow-select2').removeClass('newrow-select2');
+        }, 500);
+        
     });
 
 	/**
@@ -106,6 +132,11 @@ jQuery(document).ready(function($){
 		$('#dragdrop-sortable li.dragdrop-highlight').height(height);
 	});
 
-	$('.select2-text-select').select2();
+    /**
+     * Initialize select2 
+     */
+	$('.select2-text-select').select2({
+        width: '100%'
+    });
 
 }); //End of DOM ready

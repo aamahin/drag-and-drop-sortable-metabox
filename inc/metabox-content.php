@@ -1,7 +1,7 @@
 <?php
 	global $post;
 	$test_dragdrop = get_post_meta($post->ID, 'test_dragdrop', true);
-	// print_r($test_dragdrop);
+	$select_conutry = ['Alabama', 'Andorra', 'Australia', 'Bangladesh', 'Belgium', 'Brazil', 'China', 'Ghana', 'India', 'Japan', 'Macau', 'Wyoming'];
 ?>
 <div class="dragdrop-sortable-content">
 	<ul id="dragdrop-sortable">
@@ -14,7 +14,7 @@
 					<button type="button" class="handlediv" aria-expanded="true">
 						<span class="dashicons dashicons-arrow-up"></span>
 					</button>
-					<h3 class="hndle">Store Name</h3>
+					<h3 class="hndle">Store Name <span class="dragdrop-item-count"><?= $item['order'] + 1; ?></span></h3>
 					<button type="button" class="remove-dragdrop-sortable header-dragdrop-remove-icon">
 						<span class="dashicons dashicons-no-alt"></span>
 					</button>
@@ -31,16 +31,11 @@
 						<tbody>
 							<tr>
 								<td>
-									<?php // empty($item['column_1']) ? '' : $item['column_1']; ?>
+									<?php $column_1 =  empty($item['column_1']) ? '' : $item['column_1']; ?>
 									<select class="select2-text-select" name="test_dragdrop[<?= $index; ?>][column_1]">
-										<option value="AL">Alabama</option>
-										<option value="AL">Andorra</option>
-										<option value="AL">Australia</option>
-										<option value="AL">Bangladesh</option>
-										<option value="AL">Belgium</option>
-										<option value="AL">Brazil</option>
-										<option value="WY">China</option>
-										<option value="WY">Wyoming</option>
+										<?php foreach($select_conutry as $conutry): ?>
+										<option value="<?= $conutry; ?>" <?php selected($conutry, $column_1); ?>><?= $conutry; ?></option>
+										<?php endforeach; ?>
 									</select>
 								</td>
 								<td><input type="text" class="widefat" name="test_dragdrop[<?= $index; ?>][column_2]" value="<?= empty($item['column_2']) ? '' : $item['column_2']; ?>"></td>
@@ -64,7 +59,7 @@
 					<button type="button" class="handlediv" aria-expanded="true">
 						<span class="dashicons dashicons-arrow-up"></span>
 					</button>
-					<h3 class="hndle">Store Name</h3>
+					<h3 class="hndle">Store Name <span class="dragdrop-item-count">1</span></h3>
 					<button type="button" class="remove-dragdrop-sortable header-dragdrop-remove-icon">
 						<span class="dashicons dashicons-no-alt"></span>
 					</button>
@@ -80,7 +75,13 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><input type="text" class="widefat" name="test_dragdrop[0][column_1]"></td>
+								<td>
+									<select class="select2-text-select" name="test_dragdrop[0][column_1]">
+										<?php foreach($select_conutry as $conutry): ?>
+										<option value="<?= $conutry; ?>"><?= $conutry; ?></option>
+										<?php endforeach; ?>
+									</select>
+								</td>
 								<td><input type="text" class="widefat" name="test_dragdrop[0][column_2]"></td>
 								<td><input type="text" class="widefat" name="test_dragdrop[0][column_3]"></td>
 							</tr>

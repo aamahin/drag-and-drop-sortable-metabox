@@ -58,3 +58,11 @@ button.header-dragdrop-remove-icon {
 	height: 3em; 
 	line-height: 1.2em;
 }
+
+.select2-text-select{
+	width: 100%;
+}
+
+.single-sortable-item{
+	background-color: #fff;
+}
