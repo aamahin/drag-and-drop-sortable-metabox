@@ -48,3 +48,13 @@ button.header-dragdrop-remove-icon {
     margin-top: -10px;
     cursor: pointer;
 }
+
+#dragdrop-sortable{
+	list-style: none;
+}
+
+.dragdrop-highlight{
+	border: 1px dashed #AAAAAA;
+	height: 3em; 
+	line-height: 1.2em;
+}

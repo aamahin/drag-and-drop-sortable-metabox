@@ -4,7 +4,8 @@ jQuery(document).ready(function($){
 	 * Initialize sortable
 	 */
 	$("#dragdrop-sortable").sortable({
-		handle: ".dragdrop-sortable-item-header"
+		handle: ".dragdrop-sortable-item-header",
+		placeholder: "dragdrop-highlight"
 	});
     // $("#dragdrop-sortable").disableSelection();
 
